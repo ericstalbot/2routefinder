@@ -118,9 +118,15 @@ def get_multi_graph(path):
         
 if __name__ == "__main__":
     import cPickle
-    g = get_multi_graph('Trans_RDS_line.shp')
-    with open('multigraph.pickle','wb') as f:
-        cPickle.dump(g, f)
+    import sys
+    
+    in_path, out_path = sys.argv[1:3]
+    
+    g, crs = get_multi_graph(in_path)
+    from vtransweights import weight_presets
+    
+    with open(out_path,'wb') as f:
+        cPickle.dump((g, weight_presets, crs), f)
 
 
 
