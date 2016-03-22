@@ -6,11 +6,11 @@ aotclass_mapping = [
     ([7], 'trail'),
     ([4], 'class4'),
     ([3], 'class3'),
-    ([2]+range(21,30), 'class2'),
-    ([1]+range(11,20), 'class1'),
-    (range(30, 40), 'stateroute'),
-    (range(40,50), 'usroute'),
-    (range(51, 60), 'interstate'),
+    ([2]+list(range(21,30)), 'class2'),
+    ([1]+list(range(11,20)), 'class1'),
+    (list(range(30, 40)), 'stateroute'),
+    (list(range(40,50)), 'usroute'),
+    (list(range(51, 60)), 'interstate'),
     ([5,6], 'forestservice')
 ]
 
@@ -49,7 +49,7 @@ def get_tags(props):
     
 
 def drop_z(coords):
-    return zip(*zip(*coords)[:2])
+    return list(zip(*list(zip(*coords))[:2]))
 
 def get_rounded_coords(nd_coords):
     x,y = nd_coords
